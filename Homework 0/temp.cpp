@@ -1,5 +1,6 @@
 #include <string>
 using std::strtod;
+using std::string;
 #include <iostream>
 using std::cout; 
 using std::endl;
@@ -20,5 +21,19 @@ double cpp_ftoc(const char* str)
 
 int main(int argc, char* argv[])
 {
-	cout << c_ctof(argv[1]);
+ 	for (auto i = 1; i < argc; i++)
+	{
+		if (!strcmp(argv[i], "temperature"))
+		{
+			cout << argv[i + 2];
+			if (!strcmp(argv[i+1], "--ftoc"))
+			{
+				cout << " farenheit is equal to " << cpp_ftoc(argv[i + 2]) << " celcius.\n";
+			}
+			if (!strcmp(argv[i + 1], "--ctof"))
+			{
+				cout << " farenheit is equal to " << cpp_ftoc(argv[i + 2]) << " celcius.\n";
+			}
+		}
+	}
 }
