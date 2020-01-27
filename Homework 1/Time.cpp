@@ -5,6 +5,8 @@ using std::chrono::system_clock;
 using std::chrono::seconds;
 using std::chrono::milliseconds;
 using std::chrono::duration_cast;
+#include <random>
+#include <vector>
 
 
 class Time
@@ -33,19 +35,18 @@ private:
 
 int main()
 {
-	
-	Time t;
-	int x;
+	std::random_device dev;
+	std::mt19937 rng(dev());
+	std::uniform_int_distribution<std::mt19937::result_type> num(1, 1000000);
+	int x = num(rng);
+	cout << "The random number for searching is " << x << std::endl;;
 
-	t.begin();
+	std::vector<int> fill;
+	for (int i = 0; i < 1000000; i++)
+	{
+		fill.push_back(i);
+	}
 
-	std::cin >> x;
 
-	t.finish();
 
-	t.begin();
-
-	std::cin >> x;
-
-	t.finish();
 }
