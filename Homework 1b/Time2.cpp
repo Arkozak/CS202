@@ -43,33 +43,68 @@ private:
 };
 
 
+void add2vec(vector<string>& vec, string book)
+{
+	ifstream fin(book);
 
+	//Can it read file?
+	if (!fin)
+	{
+		cout << "Can't open file." << endl;
+	}
+	else
+	{
+		bool read = true;
+		while (read)
+		{
+			string line;
+			getline(fin, line);
+			vec.push_back(line);
+
+			//eof checking
+			if (!fin)
+			{
+				if (fin.eof())
+				{
+					read = false;
+				}
+				else
+				{
+					read = true;
+				}
+			}
+		}
+	}
+}
 
 
 int main()
 {
-	Time t;
 
 	cout << "Testing Vectors";
 
 	//Filling vector
-	vector<string> books;
+	vector<string> book1;
+	vector<string> book2;
+	vector<string> book3;
+	vector<string> book4;
+	vector<string> book5;
 
 	cout << "The program is reading: Mrs Whittelsey's Magazine for Mothers and Daughters, Book Of Mormon, Hints For Lovers, The Kama Sutra, and Irish Fairy Tales." << endl;
 	Time t;
-	add2vec(books, "Mrs_Whittelsey's_Magazine_for_Mothers_and_Daughters.txt");
+	add2vec(book1, "Mrs_Whittelsey's_Magazine_for_Mothers_and_Daughters.txt");
 	cout << "Added Mrs Whittelsey's Magazine for Mothers and Daughters to Vector." << endl;
-	add2vec(books, "Book_Of_Mormon.txt");
+	add2vec(book2, "Book_Of_Mormon.txt");
 	cout << "Added Book Of Mormon to Vector." << endl;
-	add2vec(books, "Hints_For_Lovers.txt");
+	add2vec(book3, "Hints_For_Lovers.txt");
 	cout << "Added Hints For Lovers to Vector." << endl;
-	add2vec(books, "Kama_Sutra.txt");
+	add2vec(book4, "Kama_Sutra.txt");
 	cout << "Added The Kama Sutra to Vector." << endl;
-	add2vec(books, "Irish_Fairy_Tales.txt");
+	add2vec(book5, "Irish_Fairy_Tales.txt");
 	cout << "Added Irish Fairy Tales to Vector." << endl;
 	t.finish();
 
-
+	
 
 
 
