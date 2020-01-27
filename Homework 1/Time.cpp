@@ -1,5 +1,6 @@
 #include <iostream>
 using std::cout;
+using std::endl;
 #include <chrono>
 using std::chrono::system_clock;
 using std::chrono::seconds;
@@ -35,18 +36,46 @@ private:
 
 int main()
 {
-	std::random_device dev;
-	std::mt19937 rng(dev());
-	std::uniform_int_distribution<std::mt19937::result_type> num(1, 1000000);
-	int x = num(rng);
-	cout << "The random number for searching is " << x << std::endl;;
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> dis(1, 1000000);
+	std::vector<int> random = { dis(gen) };
+	int x = dis(gen);
+	cout << "The random number for searching is " << x << endl;;
 
-	std::vector<int> fill;
+	
+	std::vector<int> dataset;
 	for (int i = 0; i < 1000000; i++)
 	{
-		fill.push_back(i);
+		dataset.push_back(i);
 	}
 
+	//Shuffling
+	cout << "Shuffling dataset took: " << endl;
+	Time t;
+	std::shuffle(dataset.begin(), dataset.end(), gen);
+	t.finish();
+
+	//Sorting
+	cout << "Sorting dataset took: " << endl;
+	t.begin();
+	std::sort(dataset.begin(), dataset.end());
+	t.finish();
+
+	//Standard search
+	cout << "Search took: " << endl;
+	t.begin();
+	std::search(dataset.begin(), dataset.end(), random.begin(),
+		random.end());
+	t.finish();
+
+	//Binary search
+	cout << "Binary Search took: " << endl;
+	t.begin();
+	std::binary_search(dataset.begin(), dataset.end(), random[0]);
+	t.finish();
+
+	
 
 
 }
