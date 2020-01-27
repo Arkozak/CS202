@@ -104,9 +104,60 @@ int main()
 	cout << "Added Irish Fairy Tales to Vector." << endl;
 	t.finish();
 
-	
+	cout << "Sorting vector of books." << endl;
+	t.begin();
+	std::sort(book1.begin(), book1.end());
+	std::sort(book2.begin(), book2.end());
+	std::sort(book3.begin(), book3.end());
+	std::sort(book4.begin(), book4.end());
+	std::sort(book5.begin(), book5.end());
+	cout << "Sorted." << endl;
+	t.finish();
 
-
+	cout << "Searching for a random string in the vector." << endl;
+	string random = "Random string";
+	t.begin();
+	if (std::find(book1.begin(), book1.end(), random) != book1.end())
+	{
+		cout << "String found!" << endl;
+	}
+	else
+	{
+		cout << "String not found." << endl;
+	}
+	if (std::find(book2.begin(), book2.end(), random) != book2.end())
+	{
+		cout << "String found!" << endl;
+	}
+	else
+	{
+		cout << "String not found." << endl;
+	}
+	if (std::find(book3.begin(), book3.end(), random) != book3.end())
+	{
+		cout << "String found!" << endl;
+	}
+	else
+	{
+		cout << "String not found." << endl;
+	}
+	if (std::find(book4.begin(), book4.end(), random) != book4.end())
+	{
+		cout << "String found!" << endl;
+	}
+	else
+	{
+		cout << "String not found." << endl;
+	}
+	if (std::find(book5.begin(), book5.end(), random) != book5.end())
+	{
+		cout << "String found!" << endl;
+	}
+	else
+	{
+		cout << "String not found." << endl;
+	}
+	t.finish();
 
 
 
