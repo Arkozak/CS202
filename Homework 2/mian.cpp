@@ -10,3 +10,23 @@ using std::shared_ptr;
 #include <algorithm>
 using std::find;
 
+struct Value
+{
+	int data;
+	Value* next;
+};
+
+int main()
+{
+
+
+
+
+
+
+
+
+
+	return 0;
+
+}
