@@ -77,7 +77,17 @@ int main()
 
 	showlist(enemies);
 	
+	enemies.pop_front();
+	cout << "Popping front:\n";
+	showlist(enemies);
 
+	cout << "Pushing back:\n";
+	enemies.push_back(goblin);
+	showlist(enemies);
+
+	cout << "Popping back:\n";
+	enemies.pop_back();
+	showlist(enemies);
 
 
 
