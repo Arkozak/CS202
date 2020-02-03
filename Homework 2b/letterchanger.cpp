@@ -13,3 +13,14 @@ void to_lower(char* s)
 	}
 }
 
+int main()
+{
+	string word;				
+	while (word != "quit")
+	{
+		cin >> word;
+		char* s = &word[0];
+		to_lower(s);
+		cout << s << '\n';
+	}
+}
