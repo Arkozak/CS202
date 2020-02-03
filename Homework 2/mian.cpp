@@ -24,6 +24,7 @@ struct Monster
 
 void showlist(list<std::shared_ptr<Monster>> list2use)
 {
+	//printing list
 	list<std::shared_ptr<Monster>> ::iterator it;
 	for (it = list2use.begin(); it != list2use.end(); ++it)
 	{
@@ -43,7 +44,7 @@ int main()
 {
 	list<std::shared_ptr<Monster>> enemies;
 
-
+	//adding stats for enemies
 	std::shared_ptr<Monster> goblin(new Monster);
 	goblin->Name = "Goblin";
 	goblin->STR = 8;
@@ -71,16 +72,19 @@ int main()
 	Ogre->WIS = 7;
 	Ogre->CHA = 7;
 
+	//adding elements to the list
 	enemies.push_back(goblin);
 	enemies.push_back(bugbear);
 	enemies.push_back(Ogre);
 
 	showlist(enemies);
 	
+	//queueing 
 	enemies.pop_front();
 	cout << "Popping front:\n";
 	showlist(enemies);
-
+	
+	//stacking
 	cout << "Pushing back:\n";
 	enemies.push_back(goblin);
 	showlist(enemies);
@@ -89,7 +93,20 @@ int main()
 	enemies.pop_back();
 	showlist(enemies);
 
+	//inserting and finding
+	list<std::shared_ptr<Monster>> ::iterator it;
+	it = std::find(enemies.begin(), enemies.end(), Ogre);
 
+	if (it != enemies.end())
+	{
+		std::cout << "Ogre stats exists in list.\n\n";
+	}
+
+	cout << "Inserting goblin stats into the second position:\n";
+	it = enemies.begin();
+	++it;
+	enemies.insert(it, goblin);
+	showlist(enemies);
 
 	return 0;
 
