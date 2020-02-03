@@ -18,9 +18,15 @@
     <ClCompile Include="mian.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="value.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Catch.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="value.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
