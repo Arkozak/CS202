@@ -75,7 +75,7 @@ int main()
 	enemies.push_back(bugbear);
 	enemies.push_back(Ogre);
 
-	showlist(enemies);
+	showlist(enemies)
 	
 
 
