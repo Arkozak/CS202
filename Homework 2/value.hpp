@@ -23,7 +23,7 @@ struct Monster
 	int CHA = 0;
 };
 
-void queuepush(list<std::shared_ptr<Monster>> enemies, const Monster& goblin);
+void queuepush(list<std::shared_ptr<Monster>> enemies, const Monster& goblin, const Monster& bugbear, const Monster& Ogre);
 
 void queuepop(list<std::shared_ptr<Monster>> enemies);
 
