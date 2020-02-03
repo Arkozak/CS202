@@ -1,10 +1,9 @@
 #include "value.hpp"
 
-void queuepush(list<std::shared_ptr<Monster>> enemies, const Monster& goblin, const Monster& bugbear, const Monster& Ogre)
+void queuepush(list<std::shared_ptr<Monster>> enemies, std::shared_ptr<Monster> goblin)
 {
 	enemies.push_back(goblin);
-	enemies.push_back(bugbear);
-	enemies.push_back(Ogre);
+
 }
 
 void queuepop(list<std::shared_ptr<Monster>> enemies)
@@ -12,7 +11,7 @@ void queuepop(list<std::shared_ptr<Monster>> enemies)
 	enemies.pop_front();
 }
 
-void stackpush(list<std::shared_ptr<Monster>> enemies, const Monster& goblin)
+void stackpush(list<std::shared_ptr<Monster>> enemies, std::shared_ptr<Monster> goblin)
 {
 	enemies.push_back(goblin);
 }
@@ -22,15 +21,14 @@ void stackpop(list<std::shared_ptr<Monster>> enemies)
 	enemies.pop_back();
 }
 
-void insert(list<std::shared_ptr<Monster>> enemies, const Monster& goblin)
+void insert(list<std::shared_ptr<Monster>> enemies, std::shared_ptr<Monster> goblin)
 {
 	list<std::shared_ptr<Monster>> ::iterator it;
 	it = enemies.begin();
-	++it;
 	enemies.insert(it, goblin);
 }
 
-void find(list<std::shared_ptr<Monster>> enemies, const Monster& Ogre)
+bool find(list<std::shared_ptr<Monster>> enemies, std::shared_ptr<Monster> Ogre)
 {
 	list<std::shared_ptr<Monster>> ::iterator it;
 	it = std::find(enemies.begin(), enemies.end(), Ogre);
@@ -38,7 +36,9 @@ void find(list<std::shared_ptr<Monster>> enemies, const Monster& Ogre)
 	if (it != enemies.end())
 	{
 		std::cout << "Ogre stats exists in list.\n\n";
+		return true;
 	}
+	return false;
 }
 
 void printenemies(list<std::shared_ptr<Monster>> enemies)

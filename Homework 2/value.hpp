@@ -23,17 +23,17 @@ struct Monster
 	int CHA = 0;
 };
 
-void queuepush(list<std::shared_ptr<Monster>> enemies, const Monster& goblin, const Monster& bugbear, const Monster& Ogre);
+void queuepush(list<std::shared_ptr<Monster>> enemies, std::shared_ptr<Monster> goblin);
 
 void queuepop(list<std::shared_ptr<Monster>> enemies);
 
-void stackpush(list<std::shared_ptr<Monster>> enemies, const Monster& goblin);
+void stackpush(list<std::shared_ptr<Monster>> enemies, std::shared_ptr<Monster> goblin);
 
 void stackpop(list<std::shared_ptr<Monster>> enemies);
 
-void insert(list<std::shared_ptr<Monster>> enemies, const Monster& goblin);
+void insert(list<std::shared_ptr<Monster>> enemies, std::shared_ptr<Monster> goblin);
 
-void find(list<std::shared_ptr<Monster>> enemies, const Monster& goblin);
+bool find(list<std::shared_ptr<Monster>> enemies, std::shared_ptr<Monster> Ogre);
 
 void printenemies(list<std::shared_ptr<Monster>> enemies);
 

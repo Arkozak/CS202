@@ -1,49 +1,14 @@
-#include <iostream>
-using std::cout;
-using std::endl;
-#include <list>
-using std::list;
-#include <memory>
-using std::make_shared;
-using std::shared_ptr;
-#include <algorithm>
-using std::find;
 
-struct Monster
+#define CATCH_CONFIG_MAIN
+
+#include "value.hpp"
+#include "Catch.hpp"
+
+
+list<std::shared_ptr<Monster>> enemies;
+
+TEST_CASE("TESTING VALUE.HPP", "[data]")
 {
-	std::string Name;
-	int STR=0;
-	int DEX=0;
-	int CON=0;
-	int INT=0;
-	int WIS=0;
-	int CHA = 0;
-};
-
-
-void showlist(list<std::shared_ptr<Monster>> list2use)
-{
-	//printing list
-	list<std::shared_ptr<Monster>> ::iterator it;
-	for (it = list2use.begin(); it != list2use.end(); ++it)
-	{
-		shared_ptr<Monster> pointer(*it);
-		cout << "NAME: " << pointer->Name << "\n";
-		cout << "STR: " << pointer->STR  << "\n";
-		cout << "DEX: " << pointer->DEX  << "\n";
-		cout << "CON: " << pointer->CON  << "\n";
-		cout << "INT: " << pointer->INT  << "\n";
-		cout << "WIS: " << pointer->WIS  << "\n";
-		cout << "CHA: " << pointer->CHA  << "\n";
-		cout << endl;
-	}
-}
-
-int main()
-{
-	list<std::shared_ptr<Monster>> enemies;
-
-	//adding stats for enemies
 	std::shared_ptr<Monster> goblin(new Monster);
 	goblin->Name = "Goblin";
 	goblin->STR = 8;
@@ -71,42 +36,37 @@ int main()
 	Ogre->WIS = 7;
 	Ogre->CHA = 7;
 
-	//adding elements to the list
 	enemies.push_back(goblin);
 	enemies.push_back(bugbear);
 	enemies.push_back(Ogre);
 
-	showlist(enemies);
-	
-	//queueing 
-	enemies.pop_front();
-	cout << "Popping front:\n";
-	showlist(enemies);
-	
-	//stacking
-	cout << "Pushing back:\n";
-	enemies.push_back(goblin);
-	showlist(enemies);
 
-	cout << "Popping back:\n";
-	enemies.pop_back();
-	showlist(enemies);
-
-	//inserting and finding
-	list<std::shared_ptr<Monster>> ::iterator it;
-	it = std::find(enemies.begin(), enemies.end(), Ogre);
-
-	if (it != enemies.end())
+	SECTION("QUEUE")
 	{
-		std::cout << "Ogre stats exists in list.\n\n";
+		queuepush(enemies, goblin);
+		REQUIRE(enemies.back() == goblin);
+
+		queuepop(enemies);
+		REQUIRE(enemies.front() != goblin);
 	}
 
-	cout << "Inserting goblin stats into the second position:\n";
-	it = enemies.begin();
-	++it;
-	enemies.insert(it, goblin);
-	showlist(enemies);
+	SECTION("STACK")
+	{
+		stackpush(enemies, goblin);
+		REQUIRE(enemies.back() == goblin);
 
-	return 0;
+		stackpop(enemies);
+		REQUIRE(enemies.back() != goblin);
+	}
 
+	SECTION("INSERT AND FIND")
+	{
+		insert(enemies,goblin);
+		REQUIRE(enemies.front() == goblin);
+
+		find(enemies, Ogre);
+		REQUIRE(find(enemies, Ogre) == true);
+	}
+
+	printenemies;
 }
