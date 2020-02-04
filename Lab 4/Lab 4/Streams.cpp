@@ -5,21 +5,25 @@
 void readfile()
 {
 	std::fstream doc;
-	std::ofstream("jumpsuites.txt");
 	std::string word;
+
+	doc.open("jumpsuits.txt");
 
 	while (doc >> word)
 	{
 		std::cout << word << std::endl;
 	}
+
+	doc.close();
 }
 
 int main()
 {
-	std::ifstream("jumpsuites.txt");
-	std::ofstream("jumpsuites.txt");
-
-
+	readfile();
 
 
 }
+
+
+
+
