@@ -18,7 +18,16 @@ void readfile()
 	doc.close();
 }
 
+void append(int x, std::string userstr)
+{
+	std::fstream doc;
+	doc.open("jumpsuits.txt", std::ios_base::app);
 
+	for (int i = 0; i < x; i++)
+	{
+		doc << "\n" << userstr;
+	}
+}
 
 int main()
 {
@@ -34,9 +43,8 @@ int main()
 	std::getline(std::cin,userstr);
 	std::cout << userstr;
 
-	
+	append(x, userstr);
 }
-
 
 
 
