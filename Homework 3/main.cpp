@@ -8,6 +8,8 @@ using std::string;
 using std::getline;
 #include <vector>
 using std::vector;
+#include <iomanip>
+using std::setw;
 
 bool LineToTokens(const string& line, vector<string>& tokens)
 {
@@ -61,7 +63,12 @@ bool ReadLine(std::istream& is, vector<string>& tokens, vector<pair<int, int>>& 
 
 void PrintTokens(std::ostream& os, const vector<std::string>& tokens, const vector<pair<int, int>>& linecols)
 {
-
+	for (int i = 0; i < tokens.size(); i++)
+	{
+		os << "Line " << linecols[i].first;
+		os << ", Column " << linecols[i].second;
+		os << ": " << tokens[i] << std::endl;
+	}
 }
 
 int main(int argc, char* argv[])
@@ -88,10 +95,8 @@ int main(int argc, char* argv[])
 		}
 	}
 	
+	PrintTokens(std::cout, maintokens, linecols);
 	
-
-	
-
 	file.close();
 	return 0;
 }
