@@ -1,6 +1,7 @@
 #include <iostream>
 using std::cout;
 using std::cin;
+using std::pair;
 #include <fstream>
 #include <string>
 using std::string;
@@ -8,28 +9,53 @@ using std::getline;
 #include <vector>
 using std::vector;
 
-bool LineToTokens(const std::string& line, std::vector<std::string>& tokens)
+bool LineToTokens(const string& line, vector<string>& tokens)
+{
+	string token;
+	
+	for (auto i : line)
+	{
+		if (i == ' ')
+		{
+			tokens.push_back(token);
+			token = "";
+		}
+		else
+		{
+			token = token + i;
+		}
+	}
+	return 0;
+}
+
+bool ReadLine(std::istream& is, vector<string>& tokens, vector<pair<int, int>>& linecols)
 {
 
 }
 
-bool ReadLine(std::istream& is, std::vector<std::string>& tokens, std::vector<std::pair<int, int>>& linecols)
+void PrintTokens(std::ostream& os, const vector<std::string>& tokens, const vector<pair<int, int>>& linecols)
 {
 
 }
 
-void PrintTokens(std::ostream& os, const std::vector<std::string>& tokens, const std::vector<std::pair<int, int>>& linecols)
-{
+int main(int argc, char* argv[])
+{	
+	string line = argv[1];
+	vector<string> tokens;
+	vector<pair<int, int>> linecols;
 
-}
+	std::ifstream file;
+	file.open("text.txt");
+	
+	if (!file.eof())
+	{
+		while (getline(file, line))
+		{
+			LineToTokens(line, tokens);
+		}
+	}
+	
 
-int main()
-{
-	string line;
-	std::fstream file;
-	file.open("token.txt");
-
-
-	file.close;
+	file.close();
 	return 0;
 }
