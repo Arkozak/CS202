@@ -12,17 +12,27 @@ using std::vector;
 bool LineToTokens(const string& line, vector<string>& tokens)
 {
 	string token;
-	
-	for (auto i : line)
+	for (auto i = 0; i < line.size();i++)
 	{
-		if (i == ' ')
+		if (line.empty())
+		{
+			tokens.push_back("");
+			return 0;
+		}
+		if (i == line.size() - 1)
+		{
+			token = token + line[i];
+			tokens.push_back(token);
+			return 0;
+		}
+		if (line[i] == ' ')
 		{
 			tokens.push_back(token);
-			token = "";
+			token.clear();
 		}
 		else
 		{
-			token = token + i;
+			token = token + line[i];
 		}
 	}
 	return 0;
@@ -30,7 +40,23 @@ bool LineToTokens(const string& line, vector<string>& tokens)
 
 bool ReadLine(std::istream& is, vector<string>& tokens, vector<pair<int, int>>& linecols)
 {
+	int l;
+	int c = 1;
+	if (linecols.empty())
+	{
+		l = 1;
+	}
+	else
+	{
+		l = linecols[linecols.size() - 1].first + 1;
+	}
 
+	for (auto i : tokens)
+	{
+		linecols.push_back(std::make_pair(l, c));
+		c = c + i.size() + 1;
+	}
+	return 0;
 }
 
 void PrintTokens(std::ostream& os, const vector<std::string>& tokens, const vector<pair<int, int>>& linecols)
@@ -42,6 +68,7 @@ int main(int argc, char* argv[])
 {	
 	string line = argv[1];
 	vector<string> tokens;
+	vector<string> maintokens;
 	vector<pair<int, int>> linecols;
 
 	std::ifstream file;
@@ -52,8 +79,17 @@ int main(int argc, char* argv[])
 		while (getline(file, line))
 		{
 			LineToTokens(line, tokens);
+			for (auto i : tokens)
+			{
+				maintokens.push_back(i);
+			}
+			ReadLine(cin, tokens, linecols);
+			tokens.clear();
 		}
 	}
+	
+	
+
 	
 
 	file.close();
