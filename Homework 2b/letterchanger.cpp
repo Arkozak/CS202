@@ -21,6 +21,6 @@ int main()
 		cin >> word;
 		char* s = &word[0];
 		to_lower(s);
-		cout << s << '\n';
+		cout << s << ' ';
 	}
 }
