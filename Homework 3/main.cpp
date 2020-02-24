@@ -10,6 +10,31 @@ using std::getline;
 using std::vector;
 #include <iomanip>
 using std::setw;
+#include <chrono>
+using std::chrono::system_clock;
+using std::chrono::duration_cast;
+
+class Time
+{
+public:
+	Time()
+	{
+		begin();
+	}
+	void begin()
+	{
+		start = system_clock::now();
+	}
+	void finish()
+	{
+		end = system_clock::now();
+		cout << "It took: " << duration_cast<fsec>(end - start).count() << "sec\n";
+	}
+private:
+	system_clock::time_point start;
+	system_clock::time_point end;
+	typedef std::chrono::duration<double> fsec;
+};
 
 bool LineToTokens(const string& line, vector<string>& tokens)
 {
@@ -78,6 +103,8 @@ int main(int argc, char* argv[])
 	vector<string> maintokens;
 	vector<pair<int, int>> linecols;
 
+	Time t;
+
 	std::ifstream file;
 	file.open("text.txt");
 	
@@ -98,5 +125,7 @@ int main(int argc, char* argv[])
 	PrintTokens(std::cout, maintokens, linecols);
 	
 	file.close();
+	
+	t.finish();
 	return 0;
 }
