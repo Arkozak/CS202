@@ -138,7 +138,7 @@ void map::moveplayer()
 		if (x == layout.roomarray[player][0])
 		{
 			player = x;
-			break;
+			
 		}
 		if (x == layout.roomarray[player][1])
 		{
