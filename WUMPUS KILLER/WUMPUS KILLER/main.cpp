@@ -9,12 +9,22 @@ int main()
 	while (0 == 0)
 	{
 		wump.printplayer();
-		std::cout << "Would you like to move or shoot?";
+		std::cout << "Would you like to move or shoot? ";
 		std::cin >> answer;
 
 		if (answer == "move")
 		{
 			wump.moveplayer();
 		}
+
+		if (wump.dead() == 1)
+		{
+			return 0;
+		}
+		
+
+		std::cout << "\n";
 	}
+
+	
 }

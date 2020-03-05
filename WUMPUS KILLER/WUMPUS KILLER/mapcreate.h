@@ -14,6 +14,7 @@ public:
 	map();
 	void printplayer();
 	void moveplayer();
+	bool dead();
 private:
 	void fillrooms();
 	int batmove();
