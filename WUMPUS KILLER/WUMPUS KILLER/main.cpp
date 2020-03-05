@@ -18,6 +18,8 @@ int main()
 			wump.moveplayer();
 		}
 
+		wump.wumpmove();
+
 		if (wump.dead() == 1)
 		{
 			return 0;

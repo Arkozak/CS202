@@ -16,6 +16,7 @@ public:
 	void moveplayer();
 	bool dead();
 	void detect();
+	void wumpmove();
 private:
 	void fillrooms();
 	int batmove();

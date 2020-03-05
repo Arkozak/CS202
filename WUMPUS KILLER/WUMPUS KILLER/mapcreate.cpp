@@ -116,7 +116,7 @@ int map::batmove()
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<> dis(0, 19);
 
-	map::player = dis(gen);
+	player = dis(gen);
 	return 0;
 }
 
@@ -126,6 +126,7 @@ void map::printplayer()
 	std::cout << "Adjacent rooms are: " << layout.roomarray[player][0] << " ";
 	std::cout << layout.roomarray[player][1] << " ";
 	std::cout << layout.roomarray[player][2] << std::endl;
+	std::cout << "You have " << arrowcount << " arrows left.";
 }
 
 void map::moveplayer()
@@ -219,7 +220,14 @@ void map::detect()
 	}
 }
 
-void map::shoot()
+void map::wumpmove()
 {
+	if (arrowcount < 5)
+	{
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::uniform_int_distribution<> dis(0, 2);
 
+		wumpus = layout.roomarray[wumpus][dis(gen)];
+	}
 }
