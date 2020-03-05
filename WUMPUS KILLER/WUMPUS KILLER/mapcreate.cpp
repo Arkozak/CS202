@@ -244,7 +244,7 @@ bool map::shoot()
 				{
 					if ((layout.roomarray[y][0] == z) || (layout.roomarray[y][1] == z) || (layout.roomarray[y][2] == z))
 					{
-						if (wumpus == z)
+						if ((wumpus == z)||(wumpus == y)||(wumpus == x))
 						{
 							return 1;
 						}
