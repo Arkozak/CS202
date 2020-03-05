@@ -4,18 +4,6 @@ map::map()
 {
 	//creating everything and running test outputs
 	fillrooms();
-	
-	for (int i = 0; i < 20; i++)
-	{
-		std::cout << i << ":    ";
-		for (int j = 0; j < 3; j++)
-		{
-			std::cout << layout.roomarray[i][j] << " ";
-		}
-		std::cout << std::endl;
-	}
-	std::cout << bats1 << " " << bats2 << " " << pit1 << " " << pit2 << " " << wumpus << " " << player << " ";
-	
 }
 
 void map::fillrooms()
@@ -126,7 +114,7 @@ void map::printplayer()
 	std::cout << "Adjacent rooms are: " << layout.roomarray[player][0] << " ";
 	std::cout << layout.roomarray[player][1] << " ";
 	std::cout << layout.roomarray[player][2] << std::endl;
-	std::cout << "You have " << arrowcount << " arrows left.";
+	std::cout << "You have " << arrowcount << " arrows left.\n";
 }
 
 void map::moveplayer()
@@ -229,5 +217,61 @@ void map::wumpmove()
 		std::uniform_int_distribution<> dis(0, 2);
 
 		wumpus = layout.roomarray[wumpus][dis(gen)];
+	}
+}
+
+
+bool map::shoot()
+{
+	if (arrowcount > 0)
+	{
+		int x;
+		int y = 0;
+		std::string path;
+		arrowcount--;
+		std::cout << "Which path would you like to shoot (Example: 2-7-6): ";
+		while (0 == 0)
+		{
+			std::cin.ignore();
+			getline(std::cin, path);
+			int x, y, z;
+			char c;
+			std::stringstream(path) >> x >> c >> y >> c >> z;
+
+			if ((layout.roomarray[player][0] == x) || (layout.roomarray[player][1] == x) || (layout.roomarray[player][2] == x))
+			{
+				if ((layout.roomarray[x][0] == y) || (layout.roomarray[x][1] == y) || (layout.roomarray[x][2] == y))
+				{
+					if ((layout.roomarray[y][0] == z) || (layout.roomarray[y][1] == z) || (layout.roomarray[y][2] == z))
+					{
+						if (wumpus == z)
+						{
+							return 1;
+						}
+						else
+						{
+							return 0;
+						}
+					}
+					else
+					{
+						std::cout << "Not a viable path, please enter a path: ";
+					}
+				}
+				else
+				{
+					std::cout << "Not a viable path, please enter a path: ";
+				}
+			}
+			else
+			{
+				std::cout << "Not a viable path, please enter a path: ";
+			}
+			
+		}
+	}
+	else
+	{
+		std::cout << "Sorry you have no arrows";
 	}
 }

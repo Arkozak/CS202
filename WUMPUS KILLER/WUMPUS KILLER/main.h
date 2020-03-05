@@ -5,5 +5,6 @@
 #include <string>
 #include <random>
 #include <iostream>
+#include <sstream>
 
 #endif 

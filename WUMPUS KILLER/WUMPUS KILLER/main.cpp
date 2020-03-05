@@ -18,6 +18,19 @@ int main()
 			wump.moveplayer();
 		}
 
+		if (answer == "shoot")
+		{
+			if (wump.shoot() == 0)
+			{
+				std::cout << "You missed.\n";
+			}
+			else
+			{
+				std::cout << "You killed the Wumpus and won!";
+				return 0;
+			}
+		}
+
 		wump.wumpmove();
 
 		if (wump.dead() == 1)

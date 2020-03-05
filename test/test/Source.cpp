@@ -4,38 +4,11 @@
 
 int main()
 {
-	std::random_device rd;
-	std::mt19937 gen(rd());
-	std::uniform_int_distribution<> dis(0, 19);
+	int x = 3;
 
-	int x;
-	int y;
-	std::vector<int> roomnums;
-	for (int i = 0; i < 20; i++)
+	if ((x == 4) ||(x == 5))  
 	{
-		x = dis(gen);
-		y = 0;
-		for (auto j : roomnums)
-		{
-			if (x == j)
-			{
-				y++;
-			}
-		}
-		if (y > 0)
-		{
-			i--;
-		}
-		else
-		{
-			roomnums.push_back(x);
-		}
+		std::cout << "boop";
 	}
 
-	for (auto i : roomnums)
-	{
-		std::cout << i << " ";
-	}
-
-	
 }
