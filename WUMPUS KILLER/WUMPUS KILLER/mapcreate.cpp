@@ -2,15 +2,28 @@
 
 map::map()
 {
+	//creating everything and running test outputs
 	fillrooms();
+	for (int i = 0; i < 20; i++)
+	{
+		std::cout << i << ":    ";
+		for (int j = 0; j < 3; j++)
+		{
+			std::cout << map::layout.roomarray[i][j] << " ";
+		}
+		std::cout << std::endl;
+	}
+	std::cout << map::bats1 << " " << map::bats2 << " " << map::pit1 << " " << map::pit2 << " " << map::wumpus << " " << map::player << " ";
 }
 
 void map::fillrooms()
 {
 	std::random_device rd;
 	std::mt19937 gen(rd());
-	std::uniform_int_distribution<> dis(1, 20);
+	std::uniform_int_distribution<> dis(0,19);
 
+
+	//Linking the rooms together
 	int x;
 	int y;
 	std::vector<int> roomnums;
@@ -34,51 +47,73 @@ void map::fillrooms()
 			roomnums.push_back(x);
 		}
 	}
-	map::a.num = roomnums[0];
-	map::a.adjacent = { roomnums[1], roomnums[20], roomnums[10] };
-	map::b.num = roomnums[1];
-	map::b.adjacent = { roomnums[2], roomnums[0], roomnums[11] };
-	map::c.num = roomnums[2];
-	map::c.adjacent = { roomnums[3], roomnums[1], roomnums[12] };
-	map::d.num = roomnums[3];
-	map::d.adjacent = { roomnums[4], roomnums[2], roomnums[13] };
-	map::a.num = roomnums[4];
-	map::a.adjacent = { roomnums[5], roomnums[3], roomnums[14] };
-	map::b.num = roomnums[5];
-	map::b.adjacent = { roomnums[6], roomnums[4], roomnums[15] };
-	map::c.num = roomnums[6];
-	map::c.adjacent = { roomnums[7], roomnums[5], roomnums[16] };
-	map::d.num = roomnums[7];
-	map::d.adjacent = { roomnums[8], roomnums[6], roomnums[17] };
-	map::a.num = roomnums[8];
-	map::a.adjacent = { roomnums[9], roomnums[7], roomnums[18] };
-	map::b.num = roomnums[9];
-	map::b.adjacent = { roomnums[10], roomnums[8], roomnums[19] };
-	map::c.num = roomnums[10];
-	map::c.adjacent = { roomnums[11], roomnums[9], roomnums[20] };
-	map::d.num = roomnums[11];
-	map::d.adjacent = { roomnums[12], roomnums[10], roomnums[0] };
-	map::a.num = roomnums[12];
-	map::a.adjacent = { roomnums[13], roomnums[11], roomnums[1] };
-	map::b.num = roomnums[13];
-	map::b.adjacent = { roomnums[14], roomnums[12], roomnums[2] };
-	map::c.num = roomnums[14];
-	map::c.adjacent = { roomnums[15], roomnums[13], roomnums[3] };
-	map::d.num = roomnums[15];
-	map::d.adjacent = { roomnums[16], roomnums[14], roomnums[4] };
-	map::a.num = roomnums[16];
-	map::a.adjacent = { roomnums[17], roomnums[15], roomnums[5] };
-	map::b.num = roomnums[17];
-	map::b.adjacent = { roomnums[18], roomnums[16], roomnums[6] };
-	map::c.num = roomnums[18];
-	map::c.adjacent = { roomnums[19], roomnums[17], roomnums[7] };
-	map::d.num = roomnums[19];
-	map::d.adjacent = { roomnums[20], roomnums[18], roomnums[8] };
-	map::d.num = roomnums[20];
-	map::d.adjacent = { roomnums[0], roomnums[19], roomnums[9] };
+	for (int i = 0; i < 10; i++)
+	{
+		roomnums.push_back(roomnums[i]);
+	}
+
+
+	//Creating the rooms
+	for (int i = 0; i < 20; i++)
+	{
+		if (i == 0)
+		{
+			map::layout.roomarray[roomnums[i]][0] = roomnums[19];
+			map::layout.roomarray[roomnums[i]][1] = roomnums[1];
+			map::layout.roomarray[roomnums[i]][2] = roomnums[10];
+		}
+		else if (i == 19)
+		{
+			map::layout.roomarray[roomnums[i]][0] = roomnums[18];
+			map::layout.roomarray[roomnums[i]][1] = roomnums[0];
+			map::layout.roomarray[roomnums[i]][2] = roomnums[9];
+		}
+		else
+		{
+			map::layout.roomarray[roomnums[i]][0] = roomnums[i-1];
+			map::layout.roomarray[roomnums[i]][1] = roomnums[i+1];
+			map::layout.roomarray[roomnums[i]][2] = roomnums[i+10];
+		}
+	}
+
+
+
+	//Determining where the bats, wumpus, pits, and player are
+	std::vector<int> filler;
+	for (int i = 0; i < 6; i++)
+	{
+		x = dis(gen);
+		y = 0;
+		for (auto j : filler)
+		{
+			if (x == j)
+			{
+				y++;
+			}
+		}
+		if (y > 0)
+		{
+			i--;
+		}
+		else
+		{
+			filler.push_back(x);
+		}
+	}
+	map::player = filler[0];
+	map::wumpus = filler[1];
+	map::pit1 = filler[2];
+	map::pit2 = filler[3];
+	map::bats1 = filler[4];
+	map::bats2 = filler[5];
 }
 
-int map::batmove(int place)
+int map::batmove()
 {
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> dis(0, 19);
+
+	map::player = dis(gen);
 	return 0;
 }
