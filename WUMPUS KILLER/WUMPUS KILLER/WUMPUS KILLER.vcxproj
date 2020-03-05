@@ -22,6 +22,10 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="mapcreate.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mapcreate.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{D21814B0-F4E4-4045-8463-B95CED410538}</ProjectGuid>

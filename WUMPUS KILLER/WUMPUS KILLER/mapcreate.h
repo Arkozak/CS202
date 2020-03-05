@@ -5,11 +5,11 @@
 
 struct room
 {
-	int room;
+	int num = 0;
 	std::vector<int> adjacent;
-	bool wump;
-	bool pit;
-	bool bats;
+	bool wump = 0;
+	bool pit = 0;
+	bool bats = 0;
 };
 
 class map
@@ -17,8 +17,10 @@ class map
 public:
 	map();
 private:
-	void batmove();
-
+	void fillrooms();
+	int batmove(int place);
+	int place;
+	room a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t;
 };
 
 #endif
