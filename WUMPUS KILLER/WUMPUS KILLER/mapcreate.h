@@ -12,6 +12,8 @@ class map
 {
 public:
 	map();
+	void printplayer();
+	void moveplayer();
 private:
 	void fillrooms();
 	int batmove();

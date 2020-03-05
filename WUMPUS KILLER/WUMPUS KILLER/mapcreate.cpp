@@ -117,3 +117,17 @@ int map::batmove()
 	map::player = dis(gen);
 	return 0;
 }
+
+void map::printplayer()
+{
+	std::cout << "You are in room: " << map::player << std::endl;
+	std::cout << "Adjacent rooms are: " << map::layout.roomarray[player][0] << " ";
+	std::cout << map::layout.roomarray[player][1] << " ";
+	std::cout << map::layout.roomarray[player][2] << std::endl;
+}
+
+
+void map::moveplayer()
+{
+
+}
