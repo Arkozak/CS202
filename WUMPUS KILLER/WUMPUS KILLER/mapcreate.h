@@ -15,6 +15,7 @@ public:
 	void printplayer();
 	void moveplayer();
 	bool dead();
+	void detect();
 private:
 	void fillrooms();
 	int batmove();
@@ -25,6 +26,7 @@ private:
 	int bats2;
 	int pit1;
 	int pit2;
+	int arrowcount = 5;
 };
 
 #endif

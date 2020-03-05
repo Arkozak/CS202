@@ -4,7 +4,7 @@ map::map()
 {
 	//creating everything and running test outputs
 	fillrooms();
-	/*
+	
 	for (int i = 0; i < 20; i++)
 	{
 		std::cout << i << ":    ";
@@ -15,7 +15,7 @@ map::map()
 		std::cout << std::endl;
 	}
 	std::cout << bats1 << " " << bats2 << " " << pit1 << " " << pit2 << " " << wumpus << " " << player << " ";
-	*/
+	
 }
 
 void map::fillrooms()
@@ -138,7 +138,7 @@ void map::moveplayer()
 		if (x == layout.roomarray[player][0])
 		{
 			player = x;
-			
+			break;
 		}
 		if (x == layout.roomarray[player][1])
 		{
@@ -163,21 +163,63 @@ bool map::dead()
 	}
 	if (player == pit1)
 	{
-		std::cout << "You lose as you fel in a pit";
+		std::cout << "You lose as you fell in a pit";
 		return 1;
 	}
 	if (player == pit2)
 	{
-		std::cout << "You lose as you fel in a pit";
+		std::cout << "You lose as you fell in a pit";
 		return 1;
 	}
 	if (player == bats1)
 	{
+		std::cout << "Bats carry you away to a random room!\n";
 		batmove();
+		if (dead() == 1)
+		{
+			return 1;
+		}
 	}
 	if (player == bats2)
 	{
+		std::cout << "Bats carry you away to a random room!\n";
 		batmove();
+		if (dead() == 1)
+		{
+			return 1;
+		}
 	}
 	return 0;
+}
+
+void map::detect()
+{
+	for (int i = 0; i < 3; i++)
+	{
+		if (layout.roomarray[player][i] == wumpus)
+		{
+			std::cout << "I smell a wumpus.\n";
+		}
+		if (layout.roomarray[player][i] == bats1)
+		{
+			std::cout << "I hear a bat.\n";
+		}
+		if (layout.roomarray[player][i] == bats2)
+		{
+			std::cout << "I hear a bat.\n";
+		}
+		if (layout.roomarray[player][i] == pit1)
+		{
+			std::cout << "I feel a breeze.\n";
+		}
+		if (layout.roomarray[player][i] == pit2)
+		{
+			std::cout << "I feel a breeze.\n";
+		}
+	}
+}
+
+void map::shoot()
+{
+
 }
