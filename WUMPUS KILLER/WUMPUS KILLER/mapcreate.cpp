@@ -214,9 +214,14 @@ void map::wumpmove()
 	{
 		std::random_device rd;
 		std::mt19937 gen(rd());
-		std::uniform_int_distribution<> dis(0, 2);
+		std::uniform_int_distribution<> dis(0, 3);
+		
+		int x = dis(gen);
 
-		wumpus = layout.roomarray[wumpus][dis(gen)];
+		if (x < 3)
+		{
+			wumpus = layout.roomarray[wumpus][dis(gen)];
+		}
 	}
 }
 
