@@ -1,5 +1,5 @@
-#ifndef CLASSSTUFF_HPP
-#define CLASSSTUFF_HPP
+#ifndef jumpsuits_HPP
+#define jumpsuits_HPP
 
 #include <iostream>
 using std::cout;
@@ -15,17 +15,18 @@ class Jumpsuits {
 public:
 	Jumpsuits();
 	Jumpsuits(int x);
-	int getX();
-	void addColor(string color);
-	void readback();
-	
+	void suit1add(string);
+	void suit2add(string);
+	void suit3add(string);
 private:
-	int x;
-	vector<string> suitcolors;
+	string suit1;
+	string suit2;
+	string suit3;
 };
 
 
 
 #endif 
+
 
 

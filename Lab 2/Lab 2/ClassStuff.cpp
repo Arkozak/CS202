@@ -13,11 +13,6 @@
 		cout << "Parametrized construtor calling jumpsuits." << endl;
 		x = y;
 	}
-
-	Jumpsuits::Jumpsuits(Jumpsuits &)
-	{
-		
-	}
 	
 	int Jumpsuits::getX()
 	{
