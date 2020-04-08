@@ -41,7 +41,19 @@ int fact(int n)
 	}
 }
 
-
+int fact_loop(int n)
+{
+	int x = 1;
+	if (n > 1)
+	{
+		for (auto i = 1; i <= n; i++)
+		{
+			x = x * i;
+		}
+		return x;
+	}
+	return 1;
+}
 
 
 
@@ -56,7 +68,7 @@ int main()
 
 	cout << "The factorial of 7 is " << fact(x);
 
-
+	cout << "The factorial of 7 is " << fact_loop(x);
 
 
 
