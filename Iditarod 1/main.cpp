@@ -12,7 +12,22 @@ int fib(int n)
 	return fib(n - 1) + fib(n - 2);
 }
 
-
+int fib_loop(int n)
+{
+	if (n <= 1)
+	{
+		return n;
+	}
+	int x = 1;
+	int y = 1;
+	for (auto i = 2; i < n; i++)
+	{
+		int temp = x;
+		x = x + y;
+		y = temp;
+	}
+	return x;
+}
 
 
 
