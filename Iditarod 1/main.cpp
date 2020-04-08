@@ -55,20 +55,17 @@ int fact_loop(int n)
 	return 1;
 }
 
-
-
-
 int main()
 {
 	int x = 7;
 
-	cout << "The 7th number in the fibonaci sequence is " << fib(x);
+	cout << "The 7th number in the fibonaci sequence is " << fib(x) << endl;
 
-	cout << "The 7th number in the fibonaci sequence is " << fib_loop(x);
+	cout << "The 7th number in the fibonaci sequence is " << fib_loop(x) << endl;
 
-	cout << "The factorial of 7 is " << fact(x);
+	cout << "The factorial of 7 is " << fact(x) << endl;
 
-	cout << "The factorial of 7 is " << fact_loop(x);
+	cout << "The factorial of 7 is " << fact_loop(x) << endl;
 
 
 
