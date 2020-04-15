@@ -24,6 +24,8 @@ public:
 	int getCityNodeInt(int node);
 
 	void printCityNode(unsigned int node);
+
+	double distance(int first, int second);
 private:
 	vector<CityNode> cityList;
 	CityNode node;

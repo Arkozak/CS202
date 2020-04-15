@@ -43,3 +43,18 @@ void CityList::printCityNode(unsigned int node)
 		 << " Lat: "<< cityList[node - 1].getLat() 
 		 << " Lon: "<< cityList[node - 1].getLon() << endl;
 }
+
+//determines distance between 2 cities
+double CityList::distance(int first, int second)
+{
+	//x = long y = lat
+	double d, x1, x2, y1, y2;
+	x1 = getCityLon(first);
+	x2 = getCityLon(second);
+	y1 = getCityLat(first);
+	y2 = getCityLat(second);
+
+	d = sqrt(pow((x2 - x1), 2) + pow((y2 - y1), 2));
+
+	return d;
+}
