@@ -23,6 +23,7 @@ public:
 	double getCityLon(int node);
 	int getCityNodeInt(int node);
 
+	void printCityNode(unsigned int node);
 private:
 	vector<CityNode> cityList;
 	CityNode node;

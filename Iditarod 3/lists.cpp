@@ -36,3 +36,10 @@ double CityList::getCityLon(int node)
 	return cityList[node].getLon();
 }
 
+//prints specific nodes
+void CityList::printCityNode(unsigned int node)
+{
+	cout <<  " Node: " << cityList[node - 1].getNodeNumber() 
+		 << " Lat: "<< cityList[node - 1].getLat() 
+		 << " Lon: "<< cityList[node - 1].getLon() << endl;
+}
