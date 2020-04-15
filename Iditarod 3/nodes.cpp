@@ -19,5 +19,19 @@ void CityNode::setNode(unsigned int node, double lat, double lon)
 	longitude = lon;
 }
 
+//the following 3 functions return what they are labeled as
+unsigned int CityNode::getNodeNumber()
+{
+	return nodeNumber;
+}
 
+double CityNode::getLat()
+{
+	return latitude;
+}
+
+double CityNode::getLon()
+{
+	return longitude;
+}
 

@@ -9,8 +9,12 @@ class CityNode
 public:
 	CityNode();
 	CityNode(unsigned int node, double latY, double lonX);
+
 	void setNode(unsigned int node, double lat, double lon);
 
+	unsigned int getNodeNumber();
+	double getLat();
+	double getLon();
 private:
 	unsigned int nodeNumber;
 	double latitude;
