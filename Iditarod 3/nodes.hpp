@@ -19,6 +19,8 @@ private:
 	unsigned int nodeNumber;
 	double latitude;
 	double longitude;
+	double graphY;
+	double graphX;
 };
 
 #endif
