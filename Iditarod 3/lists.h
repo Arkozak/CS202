@@ -14,7 +14,18 @@ using std::vector;
 class CityList
 {
 public:
+	CityList();
+	CityList(CityNode node);
+
+	void setCityNode(CityNode node);
+	CityNode getCityNode(int node);
+	double getCityLat(int node);
+	double getCityLon(int node);
+	int getCityNodeInt(int node);
+
 private:
+	vector<CityNode> cityList;
+	CityNode node;
 };
 
 #endif
