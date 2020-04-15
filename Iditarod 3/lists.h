@@ -26,9 +26,14 @@ public:
 	void printCityNode(unsigned int node);
 
 	double distance(int first, int second);
+
+	void setFileName(string name);
+	string getFileName();
+	int listVectorSpecific(int n);
 private:
 	vector<CityNode> cityList;
 	CityNode node;
+	string fileName;
 };
 
 #endif

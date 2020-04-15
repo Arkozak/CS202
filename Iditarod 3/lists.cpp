@@ -58,3 +58,19 @@ double CityList::distance(int first, int second)
 
 	return d;
 }
+
+//sets File name
+void CityList::setFileName(string name)
+{
+	fileName = name;
+}
+
+string CityList::getFileName()
+{
+	return fileName;
+}
+
+int CityList::listVectorSpecific(int n)
+{
+	return cityList[n].getNodeNumber();
+}
