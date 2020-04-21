@@ -8,6 +8,6 @@
 class TspSolver
 {
 public:
-
+	void solveG(CityList& list);
 };
 #endif
