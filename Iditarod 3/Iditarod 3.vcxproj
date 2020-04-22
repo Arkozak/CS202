@@ -128,12 +128,14 @@
     <ClCompile Include="nodes.cpp" />
     <ClCompile Include="path.cpp" />
     <ClCompile Include="solver.cpp" />
+    <ClCompile Include="svg.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lists.h" />
     <ClInclude Include="nodes.hpp" />
     <ClInclude Include="path.hpp" />
     <ClInclude Include="solver.hpp" />
+    <ClInclude Include="svg.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

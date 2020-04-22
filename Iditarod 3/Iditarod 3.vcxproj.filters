@@ -30,6 +30,9 @@
     <ClCompile Include="path.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="svg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="nodes.hpp">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="path.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="svg.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
