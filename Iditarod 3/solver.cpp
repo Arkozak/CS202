@@ -8,9 +8,8 @@ int TspSolver::RandInt(int high, int low)
 	return dist(gen1);
 }
 
-void TspSolver::solveG(CityList& list)
+void TspSolver::solveG(CityList& list, CityPath& a)
 {
-  CityPath a;
   CityPath b;
   double dist = 0;
 
@@ -73,9 +72,8 @@ void TspSolver::solveG(CityList& list)
   cout << "Total distance: " << dist << endl;
 }
 
-void TspSolver::solveR(CityList& list)
+void TspSolver::solveR(CityList& list, CityPath& a)
 {
-	CityPath a;
 	CityPath b;
 	vector<int> temp;
 	vector<int> finalVec;

@@ -7,6 +7,7 @@ using std::istringstream;
 #include "nodes.hpp"
 #include "lists.h"
 #include "solver.hpp"
+#include "svg.hpp"
 
 void readTSP(string fileName, CityNode& node, CityList& city)
 {
@@ -90,40 +91,61 @@ void readTSP(string fileName, CityNode& node, CityList& city)
 int main()
 {
 	CityNode node0(907, 333, 8000);
+	TspSolver solve;
 
-	//Make CityList 1
-	CityList d;
-	readTSP("d1291.tsp", node0, d);
-
-	//Make CityList 2
-	CityList fl;
-	readTSP("fl1400.tsp", node0, fl);
-
-	//Make CityList 2
+	cout << "NRW\n";
 	CityList nrw;
 	readTSP("nrw1379.tsp", node0, nrw);
-	
-	//Make CityList 4
-	CityList pla;
-	readTSP("pla85900.tsp", node0, pla);
-	
-	//Make CityList 5
+	CityPath svgnrw;
+	solve.solveG(nrw, svgnrw);
+	cout << "Generating Greedy SVG Output\n";
+	svgGraph(nrw, svgnrw, "nrw1379.tspGreedy.svg");
+	solve.solveR(nrw, svgnrw);
+	cout << "Generating Randomly SVG Output\n";
+	svgGraph(nrw, svgnrw, "nrw1379.tspRandom.svg");
+
+	cout << "RL:\n";
 	CityList rl;
 	readTSP("rl5915.tsp", node0, rl);
-	
-	cout << "Node rl(1): ";
-	rl.printCityNode(1);
+	CityPath svgrl;
+	solve.solveG(rl, svgrl);
+	cout << "Generating Greedy SVG Output\n";
+	svgGraph(rl, svgrl, "rl5915.tspGreedy.svg");
+	solve.solveR(rl, svgrl);
+	cout << "Generating Randomly SVG Output\n";
+	svgGraph(rl, svgrl, "rl5915.tspRandom.svg");
 
-	cout << "Distance from node 1 and node 20 in rl: " << rl.distance(1, 2) << endl;
+	cout << "FL:\n";
+	CityList fl;
+	readTSP("fl1400.tsp", node0, fl);
+	CityPath svgfl;
+	solve.solveG(fl, svgfl);
+	cout << "Generating Greedy SVG Output\n";
+	svgGraph(fl, svgfl, "fl1400.tspGreedy.svg");
+	solve.solveR(fl, svgfl);
+	cout << "Generating Randomly SVG Output\n";
+	svgGraph(fl, svgfl, "fl1400.tspRandom.svg");
 
-	TspSolver testSolve;
-	cout << "Greedy solution \n\n\n";
-	testSolve.solveG(rl);
+	cout << "D:\n";
+	CityList d;
+	readTSP("d1291.tsp", node0, d);
+	CityPath svgd;
+	solve.solveG(d, svgd);
+	cout << "Generating Greedy SVG Output\n";
+	svgGraph(d, svgd, "d1291.tspGreedy.svg");
+	solve.solveR(d, svgd);
+	cout << "Generating Randomly SVG Output\n";
+	svgGraph(d, svgd, "d1291.tspRandom.svg");
 
-	cout << "Random solution \n\n\n";
-	testSolve.solveR(rl);
-	
-
-
+	cout << "PR:\n";
+	CityList pr;
+	readTSP("pr1002.tsp", node0, pr);
+	CityPath svgpr;
+	solve.solveG(pr, svgpr);
+	cout << "Generating Greedy SVG Output\n";
+	svgGraph(pr, svgpr, "pr1002.tspGreedy.svg");
+	solve.solveR(pr, svgpr);
+	cout << "Generating Randomly SVG Output\n";
+	svgGraph(pr, svgpr, "pr1002.tspRandom.svg");
 	return 0;
 }

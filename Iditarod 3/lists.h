@@ -33,6 +33,13 @@ public:
 	int listVectorSpecific(int n);
 
 	void removeCityList(int node);
+	double minX();
+
+	double maxX();
+
+	double minY();
+
+	double maxY();
 private:
 	vector<CityNode> cityList;
 	CityNode node;

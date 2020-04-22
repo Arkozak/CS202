@@ -84,3 +84,43 @@ int CityList::getListSize()
 {
 	return cityList.size();
 }
+
+double CityList::minX() {
+	double min = 1e12;
+	for (auto i = 0; i < cityList.size(); i++) {
+		if (getCityLon(i) < min) {
+			min = getCityLon(i);
+		}
+	}
+	return min;
+}
+
+double CityList::maxX() {
+	double max = 0;
+	for (auto i = 0; i < cityList.size(); i++) {
+		if (getCityLon(i) > max) {
+			max = getCityLon(i);
+		}
+	}
+	return max;
+}
+
+double CityList::minY() {
+	double min = 1e12;
+	for (auto i = 0; i < cityList.size(); i++) {
+		if (getCityLat(i) < min) {
+			min = getCityLat(i);
+		}
+	}
+	return min;
+}
+
+double CityList::maxY() {
+	double max = 0;
+	for (auto i = 0; i < cityList.size(); i++) {
+		if (getCityLat(i) > max) {
+			max = getCityLat(i);
+		}
+	}
+	return max;
+}

@@ -9,8 +9,8 @@
 class TspSolver
 {
 public:
-	void solveG(CityList& list);
-	void solveR(CityList& list);
+	void solveG(CityList& list, CityPath& path);
+	void solveR(CityList& list, CityPath& path);
 
 	int RandInt(int high, int low);
 };
