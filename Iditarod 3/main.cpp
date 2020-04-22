@@ -6,6 +6,7 @@ using std::string;
 using std::istringstream;
 #include "nodes.hpp"
 #include "lists.h"
+#include "solver.hpp"
 
 void readTSP(string fileName, CityNode& node, CityList& city)
 {
@@ -114,6 +115,15 @@ int main()
 	rl.printCityNode(1);
 
 	cout << "Distance from node 1 and node 20 in rl: " << rl.distance(1, 2) << endl;
+
+	TspSolver testSolve;
+	cout << "Greedy solution \n\n\n";
+	testSolve.solveG(rl);
+
+	cout << "Random solution \n\n\n";
+	testSolve.solveR(rl);
+	
+
 
 	return 0;
 }

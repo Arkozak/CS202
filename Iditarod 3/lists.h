@@ -22,6 +22,7 @@ public:
 	double getCityLat(int node);
 	double getCityLon(int node);
 	int getCityNodeInt(int node);
+	int getListSize();
 
 	void printCityNode(unsigned int node);
 
@@ -30,6 +31,8 @@ public:
 	void setFileName(string name);
 	string getFileName();
 	int listVectorSpecific(int n);
+
+	void removeCityList(int node);
 private:
 	vector<CityNode> cityList;
 	CityNode node;
